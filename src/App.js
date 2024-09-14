@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"
+import "./App.css"
+import Name from "./components/Name"
+import Counter from "./components/Counter"
+import PropDrilling from "./components/PropDrilling"
+import Show from "./components/Show"
+import Context from "./components/Context"
+import Me from "./components/Me"
 
 function App() {
+  const [show, setShow] = useState(true)
+
+  const toggleShow = () => setShow(prevShow => !prevShow)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Context />
+      <Show
+        show={show}
+        toggleShow={toggleShow}
+      />
+      <PropDrilling />
+      <Counter />
+      <Name title="JMK" />
+      <Name />
+      <Me name="Jan M. K."/>
+    </>
+  )
 }
 
-export default App;
+export default App
